@@ -2,7 +2,7 @@
 
 
 
-void printMainMenu()
+void printMainMenu(menu* head)
 {	
 
 	// goto label to loop the menu in case of wrong choice
@@ -23,12 +23,12 @@ void printMainMenu()
 	switch(choice)
 	{
 		case 1:
-			loginAsAdmin();
+			loginAsAdmin(head);
 			break;
 		
 		case 2:
 			// todo
-			customerMenu();
+			customerMenu(head);
 			break;
 
 		case 3:
@@ -51,7 +51,7 @@ void printMainMenu()
 }
 
 
-void adminMenu()
+void adminMenu(menu* head)
 {
 	// goto label to loop the menu in case of wrong choice
 	XY:
@@ -65,7 +65,8 @@ void adminMenu()
 	printf("1. Add Dish in the menu\n");
 	printf("2. Remove Dish from the menu\n");
 	printf("3. Order Records\n");
-	printf("4. Exit\n");
+	printf("4. Show Menu\n");
+	printf("5. Exit\n");
 	printf("\nEnter your choice ( 1, 2 or 3) : ");
 	scanf("%d",&choice);
 
@@ -73,13 +74,14 @@ void adminMenu()
 	{
 		case 1:
 
-			//addDish();
+			addDish(head);
 			goto XY;
 			break;
 		
 		case 2:
 			// todo
-			//removeDish();
+			//removeDish(head);
+			goto XY;
 			break;
 
 		case 3:
@@ -88,17 +90,24 @@ void adminMenu()
 			//printOrderRecords();
 			break;
 
-		case 4:
+		case 4: 
+			//todo
+			showMenu(head);
+			clearScreen();
+			goto XY;
+			break;
+
+		case 5:
 			
 			delay(1);
 			clearScreen();
-			printMainMenu();
+			printMainMenu(head);
 			break;
 
 		default:
 
 			// Redirecting the user to take input again
-			printf("\n\nInvalid choice. Please enter choices as 1, 2 or 3\n");
+			printf("\n\nInvalid choice. Please enter choices as 1, 2, 3, 4 or 5\n");
 			
 			// dealying 5 secs before redirecting
 			delay(3);
@@ -110,7 +119,7 @@ void adminMenu()
 }
 
 
-void customerMenu()
+void customerMenu(menu* head)
 {
 	// goto label to loop the menu in case of wrong choice
 	XY:
@@ -141,7 +150,7 @@ void customerMenu()
 		case 3:
 			delay(3);
 			clearScreen();
-			printMainMenu();
+			printMainMenu(head);
 			break;
 
 		default:

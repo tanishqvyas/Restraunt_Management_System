@@ -4,7 +4,7 @@
 
 void main()
 {
-
-	printMainMenu();
+	menu* head = buildMenuCard();
+	printMainMenu(head);
 
 }

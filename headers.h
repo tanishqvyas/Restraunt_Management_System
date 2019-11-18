@@ -2,11 +2,12 @@
 #include<stdio.h>
 #include <stdbool.h>
 #include <time.h> 
-
+#include<unistd.h>
 #include<string.h>
 
 // to use getch()
 //#include<curses.h>
+
 
 struct menu
 {
@@ -19,12 +20,13 @@ struct menu
 typedef struct menu menu;
 
 
+menu* buildMenuCard();
 
 
 /* MENU Functions */
-void printMainMenu();
-void adminMenu();
-void customerMenu();
+void printMainMenu(menu* head);
+void adminMenu(menu* head);
+void customerMenu(menu* head);
 
 
 
@@ -33,4 +35,13 @@ void clearScreen();
 void delay(int number_of_seconds);
 
 int isAdmin(char* username, char* password);
-void loginAsAdmin();
+void loginAsAdmin(menu* head);
+
+
+
+/* Admin functions */
+menu* create_dish(int dishID, char* name, int cost);
+void addDish(menu* head);
+void removeDish(menu* head);
+menu* insert_dish(menu* head, menu* dish);
+void showMenu(menu* head);

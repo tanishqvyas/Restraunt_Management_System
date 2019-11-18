@@ -46,7 +46,7 @@ int isAdmin(char* username, char* password)
 
 
 
-void loginAsAdmin()
+void loginAsAdmin(menu* head)
 {
 	// Clearing the screen before printing stuff
 	clearScreen();
@@ -70,7 +70,7 @@ void loginAsAdmin()
 	if( isAdmin(username, password) )
 	{
 		//todo
-		adminMenu();
+		adminMenu(head);
 	}
 
 	else
@@ -79,8 +79,27 @@ void loginAsAdmin()
 		delay(20);
 		printf("Exiting\n");
 		delay(5);
-		printMainMenu();
+		printMainMenu(head);
 	}
 
 	return;
+}
+
+
+menu* buildMenuCard()
+{
+	char dishName[7][100] = {"Paneer","Daal","Butter_Nan","Kheer","Rice","MixVeg","Soup"};
+	int dishId[7] = {1,2,3,4,5,6,7};
+	float dishPrices[7] = {80, 52.33, 10, 80, 50, 70, 40};
+
+	menu* head = NULL;
+
+	for (int i = 0; i < 7; i++)
+	{
+		menu* newDish = create_dish(dishId[i], dishName[i], dishPrices[i]);
+		head = insert_dish(head, newDish);
+	}
+
+	return head;
+
 }
