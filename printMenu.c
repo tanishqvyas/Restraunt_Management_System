@@ -143,7 +143,7 @@ void customerMenu(menu* head)
 			break;
 		
 		case 2:
-			// todo
+			placeOrder(head);
 			//
 			break;
 

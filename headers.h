@@ -20,6 +20,26 @@ struct menu
 typedef struct menu menu;
 
 
+struct myOrder
+{
+	int itemId;
+	char itemName[100];
+	float itemPrice;
+	int quantity;
+	struct myOrder* next;	
+};
+typedef struct myOrder myOrder;
+
+
+struct records
+{
+	char customerName[30];
+	float totalBill;
+	struct order* myOrder;
+};
+typedef struct records records;
+
+
 menu* buildMenuCard();
 
 
@@ -45,3 +65,8 @@ void addDish(menu* head);
 void removeDish(menu* head);
 menu* insert_dish(menu* head, menu* dish);
 void showMenu(menu* head);
+
+/* customer functions */
+void placeOrder(menu* head);
+float fetch_price(menu* head, float id);
+char fetch_dishname(menu* head, float id);

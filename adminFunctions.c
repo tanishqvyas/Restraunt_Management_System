@@ -80,6 +80,12 @@ void addDish(menu* head)
 }
 
 
+/*
+initialize one more structure to keep track of number of items in menu 
+and automatically update id when and where needed
+*/
+
+
 void removeDish(menu* head)
 {
 	//todo
@@ -94,7 +100,7 @@ void showMenu(menu* head)
 		delay(5);
 		return;
 	}
-
+				
 	else
 	{
 		menu* cur = head;
