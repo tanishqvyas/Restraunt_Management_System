@@ -2,7 +2,7 @@
 
 
 
-void printMainMenu(menu* head)
+void printMainMenu(menu* head, records* record_head, recordCount* record_count)
 {	
 
 	// goto label to loop the menu in case of wrong choice
@@ -23,12 +23,12 @@ void printMainMenu(menu* head)
 	switch(choice)
 	{
 		case 1:
-			loginAsAdmin(head, record_head);
+			loginAsAdmin(head, record_head, record_count);
 			break;
 		
 		case 2:
 			// todo
-			customerMenu(head);
+			customerMenu(head, record_head, record_count);
 			break;
 
 		case 3:
@@ -51,7 +51,7 @@ void printMainMenu(menu* head)
 }
 
 
-void adminMenu(menu* head, records* record_head)
+void adminMenu(menu* head, records* record_head, recordCount* record_count)
 {
 	// goto label to loop the menu in case of wrong choice
 	XY:
@@ -87,7 +87,9 @@ void adminMenu(menu* head, records* record_head)
 		case 3:
 		
 			// todo
-			//printOrderRecords();
+			display_records(record_head, record_count);
+			delay(3);
+			goto XY;
 			break;
 
 		case 4: 
@@ -101,7 +103,7 @@ void adminMenu(menu* head, records* record_head)
 			
 			delay(1);
 			clearScreen();
-			printMainMenu(head);
+			printMainMenu(head, record_head, record_count);
 			break;
 
 		default:
@@ -119,7 +121,7 @@ void adminMenu(menu* head, records* record_head)
 }
 
 
-void customerMenu(menu* head, records* record_head)
+void customerMenu(menu* head, records* record_head, recordCount* record_count)
 {
 	// goto label to loop the menu in case of wrong choice
 	XY:
@@ -144,14 +146,15 @@ void customerMenu(menu* head, records* record_head)
 			break;
 		
 		case 2:
-			//placeOrder(head, record_head);
-			//
+			record_head = placeOrder(head, record_head, record_count);
+			delay(1);
+			goto XY;
 			break;
 
 		case 3:
 			delay(3);
 			clearScreen();
-			printMainMenu(head, record_head);
+			printMainMenu(head, record_head, record_count);
 			break;
 
 		default:

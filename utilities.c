@@ -46,7 +46,7 @@ int isAdmin(char* username, char* password)
 
 
 
-void loginAsAdmin(menu* head, records* record_head)
+void loginAsAdmin(menu* head, records* record_head, recordCount* record_count)
 {
 	// Clearing the screen before printing stuff
 	clearScreen();
@@ -69,7 +69,7 @@ void loginAsAdmin(menu* head, records* record_head)
 
 	if( isAdmin(username, password) )
 	{
-		adminMenu(head, record_head);
+		adminMenu(head, record_head, record_count);
 	}
 
 	else
@@ -78,7 +78,7 @@ void loginAsAdmin(menu* head, records* record_head)
 		delay(20);
 		printf("Exiting\n");
 		delay(5);
-		printMainMenu(head);
+		printMainMenu(head, record_head, record_count);
 	}
 
 	return;

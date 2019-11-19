@@ -23,8 +23,9 @@ typedef struct menu menu;
 struct recordCount
 {
 	int count;
+	struct recordCount* next;
 };
-typedef struct recordCount* recordCount;
+typedef struct recordCount recordCount;
 
 
 struct myOrder
@@ -53,9 +54,9 @@ menu* buildInit();
 
 
 /* MENU Functions */
-void printMainMenu(menu* head, records* record_head);
-void adminMenu(menu* head,records* record_head);
-void customerMenu(menu* head);
+void printMainMenu(menu* head, records* record_head, recordCount* record_count);
+void adminMenu(menu* head,records* record_head, recordCount* record_count);
+void customerMenu(menu* head, records* record_head, recordCount* record_count);
 
 
 
@@ -64,7 +65,7 @@ void clearScreen();
 void delay(int number_of_seconds);
 
 int isAdmin(char* username, char* password);
-void loginAsAdmin(menu* head);
+void loginAsAdmin(menu* head, records* record_head, recordCount* record_count);
 
 
 
@@ -76,6 +77,13 @@ menu* insert_dish(menu* head, menu* dish);
 void showMenu(menu* head);
 
 /* customer functions */
-void placeOrder(menu* head, records* record_head);
+int is_New_customer(records* record, char* name, recordCount* record_count);
+records* placeOrder(menu* head, records* record_head, recordCount* record_count);
 float fetch_price(menu* head, int id);
-char fetch_dishname(menu* head, int id);
+char* fetch_dishname(menu* head, int id);
+records* create_record(myOrder* head, char* name, float bill);
+records* insert_record(records* order, records* new_order);
+void display_orders(myOrder* order);
+void display_records(records* record, recordCount* record_count);
+myOrder* create_order(int id, char* dish_name, int cost, int qty);
+myOrder* insert_order(myOrder* head, myOrder* new_order);
