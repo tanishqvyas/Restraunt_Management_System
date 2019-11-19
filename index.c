@@ -4,7 +4,8 @@
 
 void main()
 {
-	menu* head = buildMenuCard();
-	printMainMenu(head);
+	records* record_head = NULL;
+	menu* head = buildInit();
+	printMainMenu(head, record_head);
 
 }

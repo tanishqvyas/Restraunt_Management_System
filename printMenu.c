@@ -23,7 +23,7 @@ void printMainMenu(menu* head)
 	switch(choice)
 	{
 		case 1:
-			loginAsAdmin(head);
+			loginAsAdmin(head, record_head);
 			break;
 		
 		case 2:
@@ -51,7 +51,7 @@ void printMainMenu(menu* head)
 }
 
 
-void adminMenu(menu* head)
+void adminMenu(menu* head, records* record_head)
 {
 	// goto label to loop the menu in case of wrong choice
 	XY:
@@ -119,7 +119,7 @@ void adminMenu(menu* head)
 }
 
 
-void customerMenu(menu* head)
+void customerMenu(menu* head, records* record_head)
 {
 	// goto label to loop the menu in case of wrong choice
 	XY:
@@ -139,18 +139,19 @@ void customerMenu(menu* head)
 	switch(choice)
 	{
 		case 1:
-			//
+			showMenu(head);
+			goto XY;
 			break;
 		
 		case 2:
-			placeOrder(head);
+			//placeOrder(head, record_head);
 			//
 			break;
 
 		case 3:
 			delay(3);
 			clearScreen();
-			printMainMenu(head);
+			printMainMenu(head, record_head);
 			break;
 
 		default:

@@ -46,7 +46,7 @@ int isAdmin(char* username, char* password)
 
 
 
-void loginAsAdmin(menu* head)
+void loginAsAdmin(menu* head, records* record_head)
 {
 	// Clearing the screen before printing stuff
 	clearScreen();
@@ -69,8 +69,7 @@ void loginAsAdmin(menu* head)
 
 	if( isAdmin(username, password) )
 	{
-		//todo
-		adminMenu(head);
+		adminMenu(head, record_head);
 	}
 
 	else
@@ -86,7 +85,7 @@ void loginAsAdmin(menu* head)
 }
 
 
-menu* buildMenuCard()
+menu* buildInit()
 {
 	char dishName[7][100] = {"Paneer","Daal","Butter_Nan","Kheer","Rice","MixVeg","Soup"};
 	int dishId[7] = {1,2,3,4,5,6,7};

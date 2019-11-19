@@ -88,12 +88,13 @@ and automatically update id when and where needed
 
 void removeDish(menu* head)
 {
-	//todo
+	//
 }
 
 void showMenu(menu* head)
 {
 
+	printf("MENU\tCARD\n\n");
 	if(head == NULL)
 	{
 		printf("Empty MENU CARD");
