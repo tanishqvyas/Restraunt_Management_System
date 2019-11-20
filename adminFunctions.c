@@ -18,7 +18,7 @@ void showMenu(menu* head)
 
 		while(cur!=NULL)
 		{
-			printf("Id : %d,  Name : %s,  Cost : %.2f$\n",cur->itemId, cur->itemName, cur->itemPrice);
+			printf("Id : %d --> \t\t Cost : %.2f$\t\t Name : %s\n",cur->itemId, cur->itemPrice, cur->itemName);
 			cur = cur->next;
 		}
 
@@ -106,7 +106,9 @@ menu* addDish(menu* head)
 		printf("\nEnter the Dish Id : ");
 		scanf("%d",&itemID);
 		printf("\nEnter the Dish Name : ");
-		scanf("%s",itemNAME);
+		char hold;
+		scanf("%c",&hold);
+		fgets(itemNAME, 100, stdin);  //scanf("%s",itemNAME);
 		printf("\nEnter the cost price of Dish : ");
 		scanf("%f",&itemCOST);
 
@@ -148,7 +150,9 @@ menu* removeDish(menu* head)
 	printf("Enter the id : ");
 	scanf("%d",&id);
 	printf("\nEnter the name : ");
-	scanf("%s",dishName);
+	char hold;
+	scanf("%c",&hold);
+	fgets(dishName, 100, stdin);//scanf("%s",dishName);
 
 	menu* cur = head;
 	menu* prev = NULL;

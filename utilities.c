@@ -87,7 +87,7 @@ void loginAsAdmin(menu* head, records* record_head, recordCount* record_count)
 
 menu* buildInit()
 {
-	char dishName[7][100] = {"Paneer","Daal","Butter_Nan","Kheer","Rice","MixVeg","Soup"};
+	char dishName[7][100] = {"Paneer","Daal Makhni","Butter Nan","Kheer","Rice","Mix Veg","Soup"};
 	int dishId[7] = {1,2,3,4,5,6,7};
 	float dishPrices[7] = {80, 52.33, 10, 80, 50, 70, 40};
 

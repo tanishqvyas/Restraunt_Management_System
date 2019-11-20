@@ -154,12 +154,14 @@ records* placeOrder(menu* head, records* record_head, recordCount* record_count)
 	int qty;
 	int numOfDishes;
 	float billAmount;
-	char customer_name[50];
+	char customer_name[100];
 	myOrder* new_order_head = NULL;
 
 
 	printf("\nEnter the name for Booking : ");
-	scanf("%s",customer_name);
+	char hold;
+	scanf("%c",&hold);
+	fgets(customer_name, 100, stdin);//scanf("%s",customer_name);
 
 	// test
 	if( is_New_customer(record_head, customer_name, record_count))
@@ -212,10 +214,12 @@ records* placeOrder(menu* head, records* record_head, recordCount* record_count)
 
 records* cancelOrder(menu* head, records* record_head, recordCount* record_count)
 {
-	char customer_name[50];
+	char customer_name[100];
 	
 	printf("\nEnter the name for Booking : ");
-	scanf("%s",customer_name);
+	char hold;
+	scanf("%c",&hold);
+	fgets(customer_name, 100, stdin);//scanf("%s",customer_name);
 
 	int count = record_count->count;
 	int found = 0;
