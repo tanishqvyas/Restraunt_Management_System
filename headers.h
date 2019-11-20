@@ -87,3 +87,4 @@ void display_orders(myOrder* order);
 void display_records(records* record, recordCount* record_count);
 myOrder* create_order(int id, char* dish_name, int cost, int qty);
 myOrder* insert_order(myOrder* head, myOrder* new_order);
+records* cancelOrder(menu* head, records* record_head, recordCount* record_count);

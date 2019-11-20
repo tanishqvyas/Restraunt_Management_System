@@ -195,7 +195,7 @@ records* placeOrder(menu* head, records* record_head, recordCount* record_count)
 
 		records* hold = create_record(new_order_head, customer_name, billAmount);
 		record_head = insert_record(record_head, hold);
-
+		printf("Successful placement of order for Customer : %s\n",customer_name);
 		record_count->count++;
 		return record_head;
 	}
@@ -206,4 +206,65 @@ records* placeOrder(menu* head, records* record_head, recordCount* record_count)
 		printf("Username Already Taken. Please enter another name.\n");
 		return record_head;
 	}
+}
+
+
+
+records* cancelOrder(menu* head, records* record_head, recordCount* record_count)
+{
+	char customer_name[50];
+	
+	printf("\nEnter the name for Booking : ");
+	scanf("%s",customer_name);
+
+	int count = record_count->count;
+	int found = 0;
+
+	records* cur = record_head;
+	records* prev = NULL;
+
+	while(count > 0)
+	{
+		if(strcmp(customer_name, cur->customerName) == 0)
+		{
+			found = 1;
+			break;
+		}
+		count--;
+		prev = cur;
+		cur = cur->next;
+	}
+
+
+	if(found == 1)
+	{
+		record_count->count--;
+		printf("Successful cancelation of the order for Customer : %s\n",customer_name);
+		delay(3);
+	}
+	else
+	{
+		printf("No Customer entry by the Name : %s was found\n",customer_name);
+		delay(3);	
+	}
+
+	if(prev == NULL && found == 1)
+	{
+		records* temp = cur;
+		cur = cur->next;
+		free(temp);
+		return cur;
+	}
+
+	else if(prev != NULL && found == 1)
+	{
+		records* temp = cur;
+		cur = cur->next;
+		prev->next = cur;
+		free(temp);
+		return record_head;
+	}
+		
+	return record_head;
+	
 }

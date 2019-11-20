@@ -133,8 +133,9 @@ void customerMenu(menu* head, records* record_head, recordCount* record_count)
 
 	printf("1. Display Menu Card\n");
 	printf("2. Place Order\n");
-	printf("3. Back\n");
-	printf("\nEnter your choice ( 1, 2 or 3) : ");
+	printf("3. Cancel Order\n");
+	printf("4. Back\n");
+	printf("\nEnter your choice ( 1, 2, 3 or 4) : ");
 	scanf("%d",&choice);
 
 	switch(choice)
@@ -151,6 +152,11 @@ void customerMenu(menu* head, records* record_head, recordCount* record_count)
 			break;
 
 		case 3:
+			record_head = cancelOrder(head, record_head, record_count);
+			goto XY;
+			break;
+
+		case 4:
 			delay(3);
 			clearScreen();
 			printMainMenu(head, record_head, record_count);
@@ -159,7 +165,7 @@ void customerMenu(menu* head, records* record_head, recordCount* record_count)
 		default:
 
 			// Redirecting the user to take input again
-			printf("\n\nInvalid choice. Please enter choices as 1, 2 or 3\n");
+			printf("\n\nInvalid choice. Please enter choices as 1, 2, 3 or 4\n");
 			
 			// dealying 5 secs before redirecting
 			delay(3);
