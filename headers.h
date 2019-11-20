@@ -71,7 +71,7 @@ void loginAsAdmin(menu* head, records* record_head, recordCount* record_count);
 
 /* Admin functions */
 menu* create_dish(int dishID, char* name, int cost);
-void addDish(menu* head);
+menu* addDish(menu* head);
 menu* removeDish(menu* head);
 menu* insert_dish(menu* head, menu* dish);
 void showMenu(menu* head);

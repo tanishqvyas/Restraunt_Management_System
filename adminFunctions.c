@@ -22,9 +22,10 @@ void showMenu(menu* head)
 			cur = cur->next;
 		}
 
-		printf("Press 1 to return back\n");
-		int hold;
-		scanf("%d",&hold);
+		printf("Press Enter\n");
+		char hold, hold2;
+		scanf("%c",&hold);
+		scanf("%c",&hold2);
 		return;
 	}
 
@@ -86,7 +87,7 @@ menu* insert_dish(menu* head, menu* dish)
 	}
 }
 
-void addDish(menu* head)
+menu* addDish(menu* head)
 {
 	int numOfDish = 0;
 	int itemID;
@@ -113,6 +114,8 @@ void addDish(menu* head)
 		{
 			menu* newDish = create_dish(itemID, itemNAME, itemCOST);
 			head = insert_dish(head, newDish);
+			printf("Successful Addition of New Dish %s\n",itemNAME);
+			delay(3);
 		}
 
 		else
@@ -125,7 +128,7 @@ void addDish(menu* head)
 
 	}
 	delay(2);
-	return;
+	return head;
 }
 
 
@@ -139,9 +142,12 @@ menu* removeDish(menu* head)
 {
 	int id;
 	char dishName[100];
-	printf("Enter the id : \n");
+	printf("\n");
+	showMenu(head);
+	printf("\n\n");
+	printf("Enter the id : ");
 	scanf("%d",&id);
-	printf("Enter the name : \n");
+	printf("\nEnter the name : ");
 	scanf("%s",dishName);
 
 	menu* cur = head;
@@ -173,11 +179,13 @@ menu* removeDish(menu* head)
 			}
 		}
 
-		else
-		{
-			printf("No such dish found !!\n");
-			delay(3);
-			return head;
-		}
+
+		prev = cur;
+		cur = cur->next;
 	}
+		
+		
+	printf("No such dish found !!\n");
+	delay(3);
+	return head;
 }

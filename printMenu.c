@@ -74,7 +74,7 @@ void adminMenu(menu* head, records* record_head, recordCount* record_count)
 	{
 		case 1:
 
-			addDish(head);
+			head = addDish(head);
 			goto XY;
 			break;
 		
