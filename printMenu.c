@@ -79,8 +79,7 @@ void adminMenu(menu* head, records* record_head, recordCount* record_count)
 			break;
 		
 		case 2:
-			// todo
-			//removeDish(head);
+			head = removeDish(head);
 			goto XY;
 			break;
 

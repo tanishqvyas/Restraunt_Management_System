@@ -86,9 +86,51 @@ and automatically update id when and where needed
 */
 
 
-void removeDish(menu* head)
+menu* removeDish(menu* head)
 {
-	//
+	int id;
+	char dishName[100];
+	printf("Enter the id : \n");
+	scanf("%d",&id);
+	printf("Enter the name : \n");
+	scanf("%s",dishName);
+
+	menu* cur = head;
+	menu* prev = NULL;
+
+	while(cur != NULL)
+	{
+		if(id == cur->itemId && (strcmp(dishName, cur->itemName)==0) )
+		{
+			if(prev == NULL)
+			{
+				menu* hold = cur;
+				cur = cur->next;
+				free(hold);
+				printf("Successful deletion !!\n");
+				delay(3);
+				return cur;
+			}
+
+			else
+			{
+				menu* hold = cur;
+				cur = cur->next;
+				prev->next = cur;
+				free(hold);
+				printf("Successful deletion !!\n");
+				delay(3);
+				return head;
+			}
+		}
+
+		else
+		{
+			printf("No such dish found !!\n");
+			delay(3);
+			return head;
+		}
+	}
 }
 
 void showMenu(menu* head)
