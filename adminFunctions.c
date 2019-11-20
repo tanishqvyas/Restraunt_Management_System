@@ -1,19 +1,57 @@
 #include "headers.h"
 
-/*
 
-struct menu
+void showMenu(menu* head)
 {
-	int itemId;
-	char itemName[100];
-	float itemPrice;
 
-	struct menu* next;
-};
-typedef struct menu menu;
+	printf("MENU\tCARD\n\n");
+	if(head == NULL)
+	{
+		printf("Empty MENU CARD");
+		delay(5);
+		return;
+	}
+				
+	else
+	{
+		menu* cur = head;
+
+		while(cur!=NULL)
+		{
+			printf("Id : %d,  Name : %s,  Cost : %.2f$\n",cur->itemId, cur->itemName, cur->itemPrice);
+			cur = cur->next;
+		}
+
+		printf("Press 1 to return back\n");
+		int hold;
+		scanf("%d",&hold);
+		return;
+	}
+
+}
 
 
-*/
+int is_New_dish(menu* head, int id, char* name)
+{
+	if(head == NULL)
+	{
+		return 1;
+	}
+
+	menu* cur = head;
+	while(cur != NULL)
+	{
+		if((strcmp(name, cur->itemName) == 0 ) && id == cur->itemId )
+		{
+			return 0;
+		}
+
+		cur = cur->next;
+	}
+
+	return 1;
+}
+
 
 
 
@@ -62,15 +100,26 @@ void addDish(menu* head)
 	for (int i = 0; i < numOfDish; i++)
 	{
 		
-		printf("Enter the Dish Id : ");
+		showMenu(head);
+
+		printf("\nEnter the Dish Id : ");
 		scanf("%d",&itemID);
 		printf("\nEnter the Dish Name : ");
 		scanf("%s",itemNAME);
 		printf("\nEnter the cost price of Dish : ");
 		scanf("%f",&itemCOST);
 
-		menu* newDish = create_dish(itemID, itemNAME, itemCOST);
-		head = insert_dish(head, newDish);
+		if(is_New_dish(head, itemID, itemNAME))
+		{
+			menu* newDish = create_dish(itemID, itemNAME, itemCOST);
+			head = insert_dish(head, newDish);
+		}
+
+		else
+		{
+			printf("Dish already exists. Cannot add same dish.\n");
+			delay(3);
+		}
 
 		clearScreen();
 
@@ -131,33 +180,4 @@ menu* removeDish(menu* head)
 			return head;
 		}
 	}
-}
-
-void showMenu(menu* head)
-{
-
-	printf("MENU\tCARD\n\n");
-	if(head == NULL)
-	{
-		printf("Empty MENU CARD");
-		delay(5);
-		return;
-	}
-				
-	else
-	{
-		menu* cur = head;
-
-		while(cur!=NULL)
-		{
-			printf("Id : %d,  Name : %s,  Cost : %.2f$\n",cur->itemId, cur->itemName, cur->itemPrice);
-			cur = cur->next;
-		}
-
-		printf("Press 1 to return back\n");
-		int hold;
-		scanf("%d",&hold);
-		return;
-	}
-
 }
