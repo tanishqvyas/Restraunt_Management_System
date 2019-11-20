@@ -27,7 +27,6 @@ void printMainMenu(menu* head, records* record_head, recordCount* record_count)
 			break;
 		
 		case 2:
-			// todo
 			customerMenu(head, record_head, record_count);
 			break;
 
@@ -42,7 +41,7 @@ void printMainMenu(menu* head, records* record_head, recordCount* record_count)
 			// Redirecting the user to take input again
 			printf("\n\nInvalid choice. Please enter choices as 1, 2 or 3\n");
 			
-			// dealying 5 secs before redirecting
+			// dealying some secs before redirecting
 			delay(3);
 			goto XY;
 			break;
@@ -85,14 +84,12 @@ void adminMenu(menu* head, records* record_head, recordCount* record_count)
 
 		case 3:
 		
-			// todo
 			display_records(record_head, record_count);
 			delay(3);
 			goto XY;
 			break;
 
 		case 4: 
-			//todo
 			showMenu(head);
 			clearScreen();
 			goto XY;
@@ -100,7 +97,6 @@ void adminMenu(menu* head, records* record_head, recordCount* record_count)
 
 		case 5:
 			
-			delay(1);
 			clearScreen();
 			printMainMenu(head, record_head, record_count);
 			break;
@@ -134,8 +130,9 @@ void customerMenu(menu* head, records* record_head, recordCount* record_count)
 	printf("1. Display Menu Card\n");
 	printf("2. Place Order\n");
 	printf("3. Cancel Order\n");
-	printf("4. Back\n");
-	printf("\nEnter your choice ( 1, 2, 3 or 4) : ");
+	printf("4. Add to current order\n");
+	printf("5. Back\n");
+	printf("\nEnter your choice ( 1, 2, 3, 4 or 5) : ");
 	scanf("%d",&choice);
 
 	switch(choice)
@@ -157,7 +154,12 @@ void customerMenu(menu* head, records* record_head, recordCount* record_count)
 			break;
 
 		case 4:
-			delay(3);
+			
+			record_head = addToExistingOrder(head, record_head, record_count);
+			goto XY;
+			break;	
+
+		case 5:
 			clearScreen();
 			printMainMenu(head, record_head, record_count);
 			break;
@@ -165,7 +167,7 @@ void customerMenu(menu* head, records* record_head, recordCount* record_count)
 		default:
 
 			// Redirecting the user to take input again
-			printf("\n\nInvalid choice. Please enter choices as 1, 2, 3 or 4\n");
+			printf("\n\nInvalid choice. Please enter choices as 1, 2, 3, 4 or 5\n");
 			
 			// dealying 5 secs before redirecting
 			delay(3);

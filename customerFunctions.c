@@ -107,12 +107,13 @@ void display_records(records* record, recordCount* record_count)
 			printf("\nOrder : \n\n");
 			printf("Item ID\t\t Name\t\t Price\t\t Quatity\n");
 			display_orders(cur->order);
-			printf("Total Bill : %.2f\n\n\n",cur->totalBill);
+			printf("Total Bill : %.2f$\n\n\n",cur->totalBill);
 			cur = cur->next;
 		}
 
 		char holdd;
-		scanf("Press Enter to continue...%c",&holdd);
+		printf("Press Enter");
+		scanf("%c",&holdd);
 	}
 
 	return;
@@ -271,4 +272,80 @@ records* cancelOrder(menu* head, records* record_head, recordCount* record_count
 		
 	return record_head;
 	
+}
+
+
+
+records* addToExistingOrder(menu* head, records* record_head, recordCount* record_count)
+{
+	char customer_name[100];
+	int id;
+	int qty;
+	int numOfDishes;
+	
+	printf("\nEnter the name corresponding to existing order : ");
+	char hold;
+	scanf("%c",&hold);
+	fgets(customer_name, 100, stdin);//scanf("%s",customer_name);
+
+	int count = record_count->count;
+	int found = 0;
+
+	records* cur = record_head;
+	records* prev = NULL;
+
+	while(count > 0)
+	{
+		if(strcmp(customer_name, cur->customerName) == 0)
+		{
+			found = 1;
+			break;
+		}
+		count--;
+		prev = cur;
+		cur = cur->next;
+	}
+
+
+	if(found == 1)
+	{
+			
+		printf("\nEnter the Number of Dishes you want to add to current order : ");
+		scanf("%d",&numOfDishes);
+		printf("\n\n");
+
+
+		for (int i = 0; i < numOfDishes; i++)
+		{
+			clearScreen();
+			showMenu(head);
+			printf("\nEnter the dish Id : ");
+			scanf("%d",&id);
+			printf("\nEnter the quantity : ");
+			scanf("%d",&qty);
+
+			float cost = fetch_price(head, id);
+			char dish_name[100];
+
+			strcpy(dish_name,fetch_dishname(head, id));
+
+			cur->totalBill += cost*qty;
+
+			myOrder* new_order = create_order(id, dish_name, cost, qty);
+			cur->order = insert_order(cur->order, new_order);
+
+		}
+		printf("Successful placement of additional order for Customer : %s\n",customer_name);
+		delay(3);
+		
+	}
+
+	else
+	{
+		printf("No Customer entry by the Name : %s was found\n",customer_name);
+		delay(3);	
+	}
+
+	return record_head;
+
 }
