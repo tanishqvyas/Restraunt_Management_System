@@ -1,4 +1,4 @@
-** Running the Project **
+**Running the Project**
 
 1. Download the repository from https://github.com/tanishqvyas/Restraunt_Management_System
 
