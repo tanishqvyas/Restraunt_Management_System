@@ -1,0 +1,51 @@
+1) Files 
+
+index.c : client file
+headers.h : Includes all the pre-processor directives and structure definitions.
+printMenu.c : Includes functions to print the menu for Admin and Customer along with the common main menu.
+adminFunctions.c : Includes all the function definitions related to admin's tasks.
+customerFunctions.c : Includes all the function definitions related to customer's uses.
+utilities.c : Includes supportive functions
+
+
+2) Important functions :
+
+	#1 Admin
+
+	- void showMenu(menu* head) : Function to print the menu card
+	
+	- menu* addDish(menu* head) : Function to add a new dish to the menu (uses linked list internally)
+	
+	- menu* removeDish(menu* head) : Function to remove an existing dish from menu
+	
+	- int is_New_dish(menu* head, int id, char* name) : Function to check for existing dish (to avoid duplication)
+
+
+	#2 Customer
+
+	- records* placeOrder(menu* head, records* record_head, recordCount* record_count) : Function to place an order corresponding to a unique user (uses a stack internally)
+
+	- records* cancelOrder(menu* head, records* record_head, recordCount* record_count) : Function to cancel an existing order
+
+	- records* addToExistingOrder(menu* head, records* record_head, recordCount* record_count) : Function to add dishes to existing order
+
+
+	#3 Utils
+
+	- void clearScreen() : Function to clear output screen
+
+	- void delay(int number_of_seconds) : Function to delay the execution time
+
+	- void loginAsAdmin(menu* head, records* record_head, recordCount* record_count) : Function to handle admin login
+
+	- menu* buildInit() : Function to setup initial menu card
+
+
+
+3) Data Structures used :
+
+	- Stack
+	- Linked lists
+
+4) Scope :
+

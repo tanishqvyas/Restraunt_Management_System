@@ -15,7 +15,7 @@ void clearScreen()
 void delay(int number_of_seconds) 
 { 
 
-	for (int i = 0; i < 2000000069*number_of_seconds; ++i)
+	for (int i = 0; i < 200000069*number_of_seconds*2; ++i)
 	{
 		continue;
 	}
